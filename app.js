@@ -1,48 +1,51 @@
-var express  = require('express');
-var cors = require('cors');
+var express  = require('express')
+var cors = require('cors')
 var mongoose = require('mongoose')
-var app = express();
-var database = mongoose.connection;
+var app = express()
+var database = mongoose.connection
 
-mongoose.connect('mongodb://paulo:Pinzon123@proximus.modulusmongo.net:27017/juHa7gog');
-//setting up the database
+mongoose.connect('mongodb://paulo:Pinzon123@proximus.modulusmongo.net:27017/juHa7gog')
 
 
 var globalScore=1;
 
-app.use(cors());
+app.use(cors())
 
-
-app.get('file:///home/paulo/Github/LeagueQuiz/index.html#login')
 
 app.get('/api/globalscore',function(req,res){
   res.send({score:globalScore});
 })
 app.put('/api/globalscore/:num',function(req,res){
 
-  globalScore=globalScore+parseInt(req.params.num);
+  globalScore=globalScore+parseInt(req.params.num)
 
   res.send({sent:parseInt(req.params.num)})
 })
-app.put('/api/globalscore/:username/:password',function(req,res){
-	Account.create({
-		username: req.params.username,
-		password: req.params.password,
-		rank: 0	
+
+app.get('/api/leaders',function(req,res){
+	Leader.find({}).sort({score: -1}).limit(10).exec(function(err,leaders){
+		res.send(leaders)
+	})
+})
+
+
+app.put('/api/leaders/:name/:score',function(req,res){
+	Leader.create({
+		name: req.params.name,
+		score: req.params.score
 	},function(err, acc){
-		Account.find(function(err, accounts){
-			res.send(accounts);
+		Leader.find(function(err, leaders){
+			res.send(leaders)
 		})
 	})
 
-});
+})
 
-var Account = mongoose.model('Account',{
-	username: String,
-	password: String,
-	rank: Number
-});
+var Leader = mongoose.model('Leader',{
+	name: String,
+	score: Number
+})
 
 
-app.listen(8080);
-console.log("App listening on port 8080");
+app.listen(8081)
+console.log("App listening on port 8081")
