@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 var app = express()
 var database = mongoose.connection
 
-mongoose.connect('mongodb://paulo:Pinzon123@proximus.modulusmongo.net:27017/juHa7gog')
+mongoose.connect('mongodb://Paulowarren31:Pinzon123@proximus.modulusmongo.net:27017/owezuM3u')
 
 
 var globalScore=1;
