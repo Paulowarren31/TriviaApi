@@ -1,11 +1,24 @@
 {
-  "name"         : "League Trivia Boys global score provider",
-  "version"      : "0.0.0",
-  "description"  : "all it does is updates and gets a global score",
-  "main"         : "server.js",
-  "author"       : "Scotch",
-  "dependencies" : {
-    "express"    : "~4.7.2",
-    "cors":"~2.5.2"
+  "name": "TriviaApi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Paulowarren31/TriviaApi.git"
+  },
+  "author": "Paulo Warren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paulowarren31/TriviaApi/issues"
+  },
+  "homepage": "https://github.com/Paulowarren31/TriviaApi",
+  "dependencies": {
+    "cors": "^2.5.3",
+    "express": "^4.11.2",
+    "mongoose": "^3.8.23"
   }
 }
