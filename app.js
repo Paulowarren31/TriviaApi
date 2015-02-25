@@ -6,7 +6,7 @@ var database = mongoose.connection
 
 
 //connects to the mongoDB database set up with Modulus
-mongoose.connect('mongodb://Paulowarren31:Pinzon123@proximus.modulusmongo.net:27017/owezuM3u')
+mongoose.connect('mongodb://localhost/admins')
 
 var globalScore=0;
 
@@ -27,7 +27,7 @@ app.put('/api/globalscore/:num',function(req,res){
 app.get('/api/leaders',function(req,res){
 	/*
 	.find(),.sort(),.limit(), and .exec() are mongoose
-	functions that allow us to search. Specifying a 
+	functions that allow us to search. Specifying a
 	blank object tells it to get us all of the Leaders
 	that exist. It then sorts those to only return the top ten leaders.
 	*/
@@ -40,7 +40,7 @@ app.get('/api/leaders',function(req,res){
 app.put('/api/leaders/:name/:score',function(req,res){
 	/*
 	This is also mongoose. It creates a new object and adds it to
-	the database. The second parameter is a callback function that 
+	the database. The second parameter is a callback function that
 	executes a .find() function that sends all leaders back.
 	This callback was mostly used for debugging.
 	*/
@@ -57,7 +57,7 @@ app.put('/api/leaders/:name/:score',function(req,res){
 /*
 This is a mongoose model. It sets up what
 variables are required when creating a new
-object. 
+object.
 */
 var Leader = mongoose.model('Leader',{
 	name: String,
